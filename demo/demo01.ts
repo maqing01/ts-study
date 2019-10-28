@@ -44,6 +44,20 @@ console.log(c); // 初始值才是真正的枚举值 —— '星期天'
 let p: string = Color[3]; // 枚举值名字为string类型 对比编译后文件即可得出区别
 console.log(p);
 
+enum Soso {
+    Blue,
+    Red = 'red',
+}
+
+const so0: Soso = Soso.Blue;
+console.log(so0);
+const so1: string = Soso[0];
+console.log(so1);
+const so2: string = Soso['Red'];
+console.log(so2);
+const so3: string = Soso['red']; // 报错
+// console.log(so3);
+
 // Any
 // 为不清楚类型的变量指定的类型
 // 值可能来自动态的内容，如用户输入或第三方代码库
