@@ -1,5 +1,5 @@
 // "noImplicitAny": true
-function demo01 (p: any) {
+function demo01(p: any) {
     console.log(p);
 }
 
@@ -21,7 +21,7 @@ class Person implements IDemo {
 }
 
 // 泛型不指定具体类型 不提示隐式any错误 类型推断
-function demo03<T>(p:T): T {
+function demo03<T>(p: T): T {
     return p;
 }
 
@@ -33,7 +33,7 @@ demo03('hello world');
 enum EventType { Mouse, Keyboard }
 
 interface Event { timestamp: number; }
-interface MouseEvent extends Event { xa : number; yb: number }
+interface MouseEvent extends Event { xa: number; yb: number }
 // interface MouseEvent{ timestamp: number; xa : number; yb: number }
 interface KeyEvent extends Event { keyCode: number }
 
@@ -47,4 +47,21 @@ listenEvent(EventType.Mouse, (e: MouseEvent) => console.log(e.xa + ',' + e.yb));
 
 // 类型断言兼容
 listenEvent(EventType.Mouse, (e: Event) => console.log((<MouseEvent>e).xa + ',' + (<MouseEvent>e).yb));
-listenEvent(EventType.Mouse, <(e: Event) => void> ((e: MouseEvent) => console.log(e.x + ',' + e.y)));
+listenEvent(EventType.Mouse, <(e: Event) => void>((e: MouseEvent) => console.log(e.x + ',' + e.y)));
+
+// 函数定义之类的情况
+interface Animal { animalProp: any };
+interface Dog extends Animal { dogProp: any };
+
+let f = (animal: Animal) => animal.animalProp;
+let g = (dog: Dog) => dog.dogProp;
+
+f = g;
+
+// Promise
+function makeLowerCase(s: string) {
+    return s.toLowerCase();
+}
+declare let foo: Promise<string | number>;
+
+foo.then(makeLowerCase);
