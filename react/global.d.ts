@@ -3,7 +3,7 @@ declare module "abc" {
         (s: string): string
     }
 
-    export let abc: funcAbcSign;
+    export let handle: funcAbcSign;
 }
 
 /* interface Window {

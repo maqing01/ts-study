@@ -1,6 +1,4 @@
 /// <reference path = "../../global.d.ts" />
-import { abc } from "abc";
+import { handle } from "abc";
 
-abc('hello world!');
-
-
+handle('hello world!');
